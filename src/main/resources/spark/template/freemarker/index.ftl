@@ -11,8 +11,8 @@
     <nav class="links" style="--items: 5;">
         <a href="/">Inicio</a>
         <a href="crear.html">Crear</a>
-        <a href="#">Editar</a>
-        <a href="#">Eliminar</a>
+        <a href="#">Login</a>
+        <a href="#">Sign out</a>
         <span class="line"></span>
     </nav>
 </header>
@@ -28,22 +28,28 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>20151256</td>
-            <td>Cristian</td>
-            <td>Bueno</td>
-            <td>809-265-2324</td>
-        </tr>
         <#list listado as estudiante>
             <tr>
                 <td>${estudiante.matricula}</td>
                 <td>${estudiante.nombre}</td>
                 <td>${estudiante.apellido}</td>
                 <td>${estudiante.telefono}</td>
+                <td id='select'>
+                    <a id='button' href='/view?id=${estudiante?index}'>
+                        Ver
+                    </a>
+                    <a id='button' href='/edit?id=${estudiante?index}'>
+                        Editar
+                    </a>
+                    <a id='button' href='/delete?id=${estudiante?index}'>
+                        Eliminar
+                    </a>
+                </td>
             </tr>
         </#list>
         </tbody>
     </table>
 </div>
+
 </body>
 </html>

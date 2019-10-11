@@ -21,17 +21,11 @@ import static spark.Spark.*;
 import static spark.Spark.*;
 
 public class Main {
-    public static ArrayList estudiantes=new ArrayList<Object>();
-
+    public static ArrayList estudiantes=new ArrayList<Estudiante>();
     public static void main(String[] args) {
 
         port(8080);
-
         staticFiles.location("/publico");
-
-        get("/formulario", (request, response)-> {
-            return renderContent("publico/crear.html");
-        });
 
         get("/", (request, response)-> {
            // return renderContent("publico/index.html");
@@ -40,6 +34,30 @@ public class Main {
             return new ModelAndView(attributes, "index.ftl");
 
         } , new FreeMarkerEngine());
+
+        get("/view", (request, response)-> {
+            Map<String, Object> attributes = new HashMap<>();
+            int id = Integer.parseInt(request.queryParams("id"));
+            //Estudiante est = (Estudiante) estudiantes.get(id);
+            attributes.put("vista",estudiantes.get(id));
+            return new ModelAndView(attributes, "view.ftl");
+
+        } , new FreeMarkerEngine());
+
+        get("/edit", (request, response)-> {
+            Map<String, Object> attributes = new HashMap<>();
+            int id = Integer.parseInt(request.queryParams("id"));
+            attributes.put("edicion",estudiantes.get(id));
+            return new ModelAndView(attributes, "edit.ftl");
+
+        } , new FreeMarkerEngine());
+
+        get("/delete", (request, response) -> {
+            int id = Integer.parseInt(request.queryParams("id"));
+            estudiantes.remove(id);
+            response.redirect("/");
+            return "Estudiante Eliminado";
+        });
 
         post("/insertar", (request, response) -> {
             Estudiante est=new Estudiante();

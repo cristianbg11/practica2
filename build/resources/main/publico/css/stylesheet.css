@@ -193,3 +193,24 @@ tbody td:hover:before {
     background: rgba(20, 20, 20, .8);
     padding: 10px 80px;
 }
+
+
+ #button {
+        line-height: 1;
+        display: inline-block;
+        font-size: 1rem;
+        text-decoration: none;
+        border-radius: 5px;
+        color: #fff;
+        padding: 8px;
+        background-color: #54a1a0;
+    }
+#select {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2C3845;
+}
+
+#select:before {
+    display: none;
+}
+
