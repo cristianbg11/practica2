@@ -207,7 +207,7 @@ tbody td:hover:before {
     }
 #select {
     padding-bottom: 20px;
-    border-bottom: 1px solid /*darken(#2C3845,2%);*/
+    border-bottom: 1px solid #2C3845
 }
 
 #select:before {

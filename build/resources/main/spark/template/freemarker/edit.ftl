@@ -17,7 +17,7 @@
 </header>
 
 <div class="signupSection">
-    <form action="/insertar" method="POST" class="signupForm" name="signupform">
+    <form action="/actualizar" method="POST" class="signupForm" name="signupform">
         <h2>Estudiante</h2>
         <ul class="noBullet">
             <li>
@@ -25,6 +25,7 @@
                 <input type="text" class="inputFields" id="matricula" name="matricula" placeholder="Matricula" value="${edicion.matricula}" required/>
             </li>
             <li>
+                <input type="hidden" id="id" name="id" value="${id}">
                 <label for="nombre"></label>
                 <input type="text" class="inputFields" id="nombre" name="nombre" placeholder="Nombre" value="${edicion.nombre}" required/>
             </li>

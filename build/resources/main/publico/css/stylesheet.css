@@ -63,8 +63,8 @@ code {
     transition: all .5s;
     position: absolute;
     bottom: 0;
-    left: var(--left, calc(100% / var(--items) * (var(--index) - 1)));
-    width: var(--width, calc(100% / var(--items)));
+    left: var(/*--left,*/calc(100% / var(--items) * (var(--index) - 1)));
+    width: var(/*--width, */calc(100% / var(--items)));
     --index: 0;
 }
 .links > a:hover ~ .line {
@@ -203,11 +203,11 @@ tbody td:hover:before {
         border-radius: 5px;
         color: #fff;
         padding: 8px;
-        background-color: #54a1a0;
+        /*background-color: darken(#54a1a0,5%);*/
     }
 #select {
     padding-bottom: 20px;
-    border-bottom: 1px solid #2C3845;
+    border-bottom: 1px solid #2C3845
 }
 
 #select:before {

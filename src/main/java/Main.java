@@ -48,6 +48,7 @@ public class Main {
             Map<String, Object> attributes = new HashMap<>();
             int id = Integer.parseInt(request.queryParams("id"));
             attributes.put("edicion",estudiantes.get(id));
+            attributes.put("id",id);
             return new ModelAndView(attributes, "edit.ftl");
 
         } , new FreeMarkerEngine());
@@ -68,6 +69,17 @@ public class Main {
             estudiantes.add(est);
             response.redirect("/");
             return "Estudiante Creado";
+        });
+
+        post("/actualizar", (request, response) -> {
+            int id = Integer.parseInt(request.queryParams("id"));
+            Estudiante est = (Estudiante) estudiantes.get(id);
+            est.matricula = Integer.parseInt(request.queryParams("matricula"));
+            est.nombre=request.queryParams("nombre");
+            est.apellido = request.queryParams("apellido");
+            est.telefono = request.queryParams("telefono");
+            response.redirect("/");
+            return "Estudiante actualizado";
         });
 
     }
