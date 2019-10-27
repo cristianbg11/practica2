@@ -79,7 +79,7 @@ public class Main {
             est.apellido = request.queryParams("apellido");
             est.telefono = request.queryParams("telefono");
             response.redirect("/");
-            return "Estudiante actualizado";
+            return 0;
         });
 
     }
