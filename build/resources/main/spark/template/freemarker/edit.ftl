@@ -22,7 +22,7 @@
         <ul class="noBullet">
             <li>
                 <label for="matricula"></label>
-                <input type="text" class="inputFields" id="matricula" name="matricula" placeholder="Matricula" value="${edicion.matricula}" required/>
+                <input type="text" class="inputFields" id="matricula" name="matricula" placeholder="Matricula" value="${edicion.matricula?c}" required/>
             </li>
             <li>
                 <input type="hidden" id="id" name="id" value="${id}">

@@ -30,7 +30,7 @@
         <tbody>
         <#list listado as estudiante>
             <tr>
-                <td>${estudiante.matricula}</td>
+                <td>${estudiante.matricula?c}</td>
                 <td>${estudiante.nombre}</td>
                 <td>${estudiante.apellido}</td>
                 <td>${estudiante.telefono}</td>

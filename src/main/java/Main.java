@@ -1,4 +1,5 @@
 
+import freemarker.template.Configuration;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -25,6 +26,8 @@ public class Main {
     public static void main(String[] args) {
 
         port(8080);
+        //freemarker.template.Configuration config = new Configuration();
+        //config.setClassForTemplateLoading(this.getClass(), "/templates/");
         staticFiles.location("/publico");
 
         get("/", (request, response)-> {
