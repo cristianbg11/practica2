@@ -1,11 +1,26 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
 plugins {
     id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
 group 'pucmm'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
+mainClassName = "Main"
 
 repositories {
     mavenCentral()
@@ -27,4 +42,14 @@ dependencies {
     //compile 'org.webjars:bootstrap:3.3.6', //existe un bug que no permite varias rutas, están metiendo mano.
     compile "org.slf4j:slf4j-simple:1.7.21"
     compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+}
+
+shadowJar {
+    baseName = 'practica2'
+    classifier = null
+    version = null
+}
+
+task stage {
+    dependsOn shadowJar
 }
