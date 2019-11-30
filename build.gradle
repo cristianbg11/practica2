@@ -12,15 +12,12 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'application'
-    id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
 group 'pucmm'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-mainClassName = "Main"
 
 repositories {
     mavenCentral()
@@ -44,12 +41,5 @@ dependencies {
     compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
 }
 
-shadowJar {
-    baseName = 'practica2'
-    classifier = null
-    version = null
-}
-
-task stage {
-    dependsOn shadowJar
-}
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
