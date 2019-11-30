@@ -25,7 +25,8 @@ public class Main {
     public static ArrayList estudiantes=new ArrayList<Estudiante>();
     public static void main(String[] args) {
 
-        port(8080);
+        port(getHerokuAssignedPort());
+        //port(8080);
         //freemarker.template.Configuration config = new Configuration();
         //config.setClassForTemplateLoading(this.getClass(), "/templates/");
         staticFiles.location("/publico");
@@ -90,5 +91,13 @@ public class Main {
         URL url = Main.class.getResource(htmlFile);
         Path path = Paths.get(url.toURI());
         return new String(Files.readAllBytes(path), Charset.defaultCharset());
+    }
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 8080; //Retorna el puerto por defecto en caso de no estar en Heroku.
     }
 }
